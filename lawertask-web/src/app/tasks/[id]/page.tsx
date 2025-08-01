@@ -11,6 +11,7 @@ import { tasksAPI, clientsAPI } from '@/services/api';
 import { Task, Client } from '@/types';
 import { ArrowLeft, Save, X, Trash2 } from 'lucide-react';
 import Link from 'next/link';
+import { use } from 'react';
 
 const taskSchema = z.object({
   title: z.string().min(1, 'Título é obrigatório'),
@@ -23,13 +24,16 @@ const taskSchema = z.object({
 
 type TaskFormData = z.infer<typeof taskSchema>;
 
-export default function EditTaskPage({ params }: { params: { id: string } }) {
+export default function EditTaskPage({ params }: { params: Promise<{ id: string }> }) {
   const { isAuthenticated } = useAuth();
   const router = useRouter();
   const [task, setTask] = useState<Task | null>(null);
   const [clients, setClients] = useState<Client[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingData, setIsLoadingData] = useState(true);
+
+  // Desempacotar params usando React.use()
+  const { id } = use(params);
 
   const {
     register,
@@ -47,12 +51,12 @@ export default function EditTaskPage({ params }: { params: { id: string } }) {
     }
 
     fetchData();
-  }, [isAuthenticated, router, params.id]);
+  }, [isAuthenticated, router, id]);
 
   const fetchData = async () => {
     try {
       const [taskData, clientsData] = await Promise.all([
-        tasksAPI.getById(params.id),
+        tasksAPI.getById(id),
         clientsAPI.getAll(),
       ]);
       
@@ -81,7 +85,7 @@ export default function EditTaskPage({ params }: { params: { id: string } }) {
     setIsLoading(true);
 
     try {
-      await tasksAPI.update(params.id, data);
+      await tasksAPI.update(id, data);
       router.push('/tasks');
     } catch (error: any) {
       alert(error.response?.data?.message || 'Erro ao atualizar tarefa');
@@ -96,7 +100,7 @@ export default function EditTaskPage({ params }: { params: { id: string } }) {
     }
 
     try {
-      await tasksAPI.delete(params.id);
+      await tasksAPI.delete(id);
       router.push('/tasks');
     } catch (error) {
       alert('Erro ao excluir tarefa');
