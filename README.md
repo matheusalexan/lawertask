@@ -1,53 +1,57 @@
 # LawerTask - Sistema de Gestão de Tarefas
 
-Sistema completo de gestão de tarefas desenvolvido para escritórios de advocacia, com API REST em NestJS e interface web em Next.js.
+Sistema de gestão de tarefas desenvolvido para escritórios de advocacia, com API REST em NestJS e interface web em Next.js.
 
-## 🚀 Funcionalidades
+## Visão Geral
+
+O LawerTask é uma aplicação web completa que permite gerenciar tarefas associadas a clientes, com sistema de autenticação, dashboard de estatísticas e interface responsiva.
+
+## Funcionalidades
 
 ### Backend (API)
-- ✅ Autenticação JWT
-- ✅ CRUD completo de tarefas
-- ✅ Gestão de clientes
-- ✅ Validação de dados
-- ✅ Documentação Swagger
-- ✅ Testes unitários
-- ✅ Banco de dados PostgreSQL com Prisma
+- Autenticação JWT com bcrypt
+- CRUD completo de tarefas
+- Gestão de clientes
+- Validação de dados com class-validator
+- Documentação automática com Swagger
+- Testes unitários
+- Banco de dados PostgreSQL com Prisma ORM
 
 ### Frontend (Web)
-- ✅ Interface responsiva e moderna
-- ✅ Dashboard com estatísticas
-- ✅ Gestão completa de tarefas
-- ✅ Formulários com validação
-- ✅ Autenticação integrada
-- ✅ Navegação intuitiva
+- Interface responsiva com Tailwind CSS
+- Dashboard com estatísticas em tempo real
+- Gestão completa de tarefas (CRUD)
+- Formulários com validação
+- Sistema de autenticação integrado
+- Navegação intuitiva
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 ### Backend
-- **NestJS** - Framework Node.js
-- **TypeScript** - Linguagem de programação
-- **Prisma** - ORM para banco de dados
-- **PostgreSQL** - Banco de dados
-- **JWT** - Autenticação
+- **NestJS** - Framework Node.js para construção de aplicações escaláveis
+- **TypeScript** - Linguagem de programação tipada
+- **Prisma** - ORM moderno para Node.js e TypeScript
+- **PostgreSQL** - Banco de dados relacional
+- **JWT** - Autenticação baseada em tokens
 - **Swagger** - Documentação da API
-- **Jest** - Testes unitários
+- **Jest** - Framework de testes
 
 ### Frontend
-- **Next.js 14** - Framework React
-- **TypeScript** - Linguagem de programação
-- **Tailwind CSS** - Estilização
-- **React Hook Form** - Formulários
+- **Next.js 14** - Framework React com App Router
+- **TypeScript** - Linguagem de programação tipada
+- **Tailwind CSS** - Framework CSS utilitário
+- **React Hook Form** - Biblioteca para formulários
 - **Zod** - Validação de esquemas
 - **Axios** - Cliente HTTP
-- **Lucide React** - Ícones
+- **Lucide React** - Biblioteca de ícones
 
-## 📋 Pré-requisitos
+## Pré-requisitos
 
-- Node.js 18+ 
-- PostgreSQL
+- Node.js 18 ou superior
+- PostgreSQL 12 ou superior
 - npm ou yarn
 
-## 🚀 Instalação e Configuração
+## Instalação e Configuração
 
 ### 1. Clone o repositório
 ```bash
@@ -65,7 +69,7 @@ npm install
 
 # Configure as variáveis de ambiente
 cp .env.example .env
-# Edite o arquivo .env com suas configurações de banco
+# Edite o arquivo .env com suas configurações
 
 # Configure o banco de dados
 npm run db:generate
@@ -90,44 +94,44 @@ npm install
 npm run dev
 ```
 
-## 🔧 Configuração do Banco de Dados
+## Configuração do Banco de Dados
 
 ### Variáveis de Ambiente (.env)
 ```env
 DATABASE_URL="postgresql://usuario:senha@localhost:5432/lawertask?schema=public"
-JWT_SECRET="sua-chave-secreta-super-segura-aqui"
+JWT_SECRET="sua-chave-secreta-aqui"
 JWT_EXPIRES_IN="24h"
 ```
 
 ### Dados Iniciais
-O sistema já vem com dados de exemplo:
+O sistema inclui dados de exemplo para demonstração:
 - **Usuário Admin**: admin@lawertask.com / admin123
 - **Clientes**: João Silva, Maria Santos, Pedro Oliveira
-- **Tarefas**: 3 tarefas de exemplo
+- **Tarefas**: 3 tarefas de exemplo com diferentes status
 
-## 📚 Documentação da API
+## Documentação da API
 
 Acesse a documentação Swagger em: `http://localhost:3001/api/docs`
 
 ### Endpoints Principais
 
 #### Autenticação
-- `POST /auth/login` - Login
-- `POST /auth/register` - Registro
+- `POST /auth/login` - Autenticação de usuário
+- `POST /auth/register` - Registro de novo usuário
 
 #### Tarefas
-- `GET /api/tasks` - Listar tarefas
-- `POST /api/tasks` - Criar tarefa
-- `GET /api/tasks/:id` - Buscar tarefa
+- `GET /api/tasks` - Listar todas as tarefas
+- `POST /api/tasks` - Criar nova tarefa
+- `GET /api/tasks/:id` - Buscar tarefa específica
 - `PATCH /api/tasks/:id` - Atualizar tarefa
 - `DELETE /api/tasks/:id` - Excluir tarefa
-- `GET /api/tasks/stats` - Estatísticas
+- `GET /api/tasks/stats` - Obter estatísticas
 
 #### Clientes
-- `GET /api/clients` - Listar clientes
-- `GET /api/clients/:id` - Buscar cliente
+- `GET /api/clients` - Listar todos os clientes
+- `GET /api/clients/:id` - Buscar cliente específico
 
-## 🧪 Testes
+## Testes
 
 ### Backend
 ```bash
@@ -142,35 +146,36 @@ cd lawertask-web
 npm run test
 ```
 
-## 📱 Uso do Sistema
+## Uso do Sistema
 
 ### 1. Acesso
-- Acesse: `http://localhost:3000`
-- Faça login com: admin@lawertask.com / admin123
+- URL: `http://localhost:3000`
+- Credenciais: admin@lawertask.com / admin123
 
 ### 2. Dashboard
-- Visualize estatísticas das tarefas
-- Acesse ações rápidas
+- Visualização de estatísticas das tarefas
+- Acesso rápido às principais funcionalidades
 
 ### 3. Gestão de Tarefas
-- **Listar**: Visualize todas as tarefas
-- **Criar**: Adicione novas tarefas
-- **Editar**: Modifique tarefas existentes
-- **Excluir**: Remova tarefas
+- **Listagem**: Visualizar todas as tarefas em cards
+- **Criação**: Adicionar novas tarefas com formulário completo
+- **Edição**: Modificar tarefas existentes
+- **Exclusão**: Remover tarefas com confirmação
 
 ### 4. Funcionalidades
-- Filtros por status e prioridade
-- Associação com clientes
+- Associação de tarefas com clientes
+- Sistema de prioridades (Baixa, Média, Alta)
+- Status de progresso (A Fazer, Em Andamento, Concluída)
 - Datas de vencimento
-- Status de progresso
+- Interface responsiva para desktop e mobile
 
-## 🏗️ Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 lawertask/
 ├── lawertask-api/          # Backend NestJS
 │   ├── src/
-│   │   ├── auth/           # Autenticação
+│   │   ├── auth/           # Módulo de autenticação
 │   │   ├── tasks/          # Módulo de tarefas
 │   │   ├── clients/        # Módulo de clientes
 │   │   ├── prisma/         # Configuração do banco
@@ -190,7 +195,7 @@ lawertask/
 └── README.md
 ```
 
-## 🚀 Deploy
+## Deploy
 
 ### Backend (Railway/Render)
 1. Configure as variáveis de ambiente
@@ -202,28 +207,28 @@ lawertask/
 1. Configure a variável `NEXT_PUBLIC_API_URL`
 2. Deploy automático via GitHub
 
-## 🤝 Contribuição
+## Contribuição
 
 1. Fork o projeto
-2. Crie uma branch para sua feature
-3. Commit suas mudanças
-4. Push para a branch
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
 
-## 📄 Licença
+## Licença
 
-Este projeto está sob a licença MIT.
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-## 👨‍💻 Autor
+## Autor
 
 **Matheus Alexandre**
 - GitHub: [@matheusalexan](https://github.com/matheusalexan)
 
-## 📞 Suporte
+## Suporte
 
 Para dúvidas ou problemas:
 - Abra uma issue no GitHub
-- Entre em contato: matheus@exemplo.com
+- Entre em contato através do email: matheus@exemplo.com
 
 ---
 
