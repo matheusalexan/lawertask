@@ -219,11 +219,6 @@ lawertask/
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-## Autor
-
-**Matheus Alexandre**
-- GitHub: [@matheusalexan](https://github.com/matheusalexan)
-
 ## Suporte
 
 Para dúvidas ou problemas:
