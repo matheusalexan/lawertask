@@ -219,12 +219,6 @@ lawertask/
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-## Suporte
-
-Para dúvidas ou problemas:
-- Abra uma issue no GitHub
-- Entre em contato através do email: matheus@exemplo.com
-
 ---
 
 **LawerTask** - Simplificando a gestão de tarefas para escritórios de advocacia. 
